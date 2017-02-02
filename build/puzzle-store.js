@@ -62,23 +62,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _redux = __webpack_require__(1);
 	
-	var _actions = __webpack_require__(2);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
 	var _app = __webpack_require__(3);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
+	var _actions = __webpack_require__(2);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	/*
-	  The central point of Redux is that you maintain state, you put state in a store, and apps
-	  submit actions to, and subscribe to changes in, that store.  So, we import state from appState,
-	  and make it into a store.
-	*/
 	var store = (0, _redux.createStore)(_app2.default);
 	
+	// export the actions and the store
 	exports.default = { store: store, actions: _actions2.default };
 
 /***/ },
