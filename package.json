@@ -3,7 +3,7 @@
   "description": "Redux store, states and actions for Word Play website and app",
   "keywords": "puzzle pun word play wordplay redux state",
   "author": "Martin Tasker",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "main": "build/puzzle-store.js",
   "repository": {
