@@ -7,7 +7,7 @@
 		exports["PuzzleStore"] = factory(require("redux"), require("immutable"));
 	else
 		root["PuzzleStore"] = factory(root["redux"], root["immutable"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -62,11 +62,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _redux = __webpack_require__(1);
 	
-	var _app = __webpack_require__(3);
+	var _app = __webpack_require__(2);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _actions = __webpack_require__(2);
+	var _actions = __webpack_require__(4);
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
@@ -85,66 +85,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 2 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var actions = {
-	  // setup time: add puzzle data into store side of state
-	  addPuzzleData: function addPuzzleData(id, puzzle) {
-	    return { type: 'ADD_PUZZLE_DATA', id: id, puzzle: puzzle };
-	  },
-	
-	  // navigation time, set current puzzle
-	  activatePuzzle: function activatePuzzle(id) {
-	    return { type: 'ACTIVATE_PUZZLE', id: id };
-	  },
-	  _setCurrentPuzzle: function _setCurrentPuzzle(id, puzzleData) {
-	    return { type: 'SET_CURRENT_PUZZLE', id: id, puzzleData: puzzleData };
-	  },
-	  _setPuzzleData: function _setPuzzleData(puzzleData) {
-	    return { type: 'SET_PUZZLE_DATA', puzzleData: puzzleData };
-	  },
-	  _setPuns: function _setPuns(puns) {
-	    return { type: 'SET_PUNS', puns: puns };
-	  },
-	
-	  // control visibility of answers, in context of current puzzle
-	  showAlways: function showAlways() {
-	    return { type: 'SHOW_ALWAYS', showState: 'always' };
-	  },
-	  showOnHover: function showOnHover() {
-	    return { type: 'SHOW_ON_HOVER', showState: 'on-hover' };
-	  },
-	  showBelow: function showBelow() {
-	    return { type: 'SHOW_BELOW', showState: 'below' };
-	  },
-	  showNever: function showNever() {
-	    return { type: 'SHOW_NEVER', showState: 'never' };
-	  },
-	
-	  // control state of pun given by index, in context of current puzzle
-	  setPunDone: function setPunDone(index) {
-	    return { type: 'SET_PUN_DONE', index: index, punStatus: 'done' };
-	  },
-	  setPunNotDone: function setPunNotDone(index) {
-	    return { type: 'SET_PUN_NOT_DONE', index: index, punStatus: 'not-done' };
-	  },
-	  setPunRight: function setPunRight(index) {
-	    return { type: 'SET_PUN_RIGHT', index: index, punStatus: 'right' };
-	  },
-	  setPunWrong: function setPunWrong(index) {
-	    return { type: 'SET_PUN_WRONG', index: index, punStatus: 'wrong' };
-	  }
-	};
-	
-	exports.default = actions;
-
-/***/ },
-/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -210,11 +150,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return state;
 	};
 	
-	var _immutable = __webpack_require__(4);
+	var _immutable = __webpack_require__(3);
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _actions = __webpack_require__(2);
+	var _actions = __webpack_require__(4);
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
@@ -227,10 +167,70 @@ return /******/ (function(modules) { // webpackBootstrap
 	var initialAppState = _immutable2.default.Map({ currentState: (0, _current2.default)(), puzzleData: _immutable2.default.Map() });
 
 /***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+
+/***/ },
 /* 4 */
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var actions = {
+	  // setup time: add puzzle data into store side of state
+	  addPuzzleData: function addPuzzleData(id, puzzle) {
+	    return { type: 'ADD_PUZZLE_DATA', id: id, puzzle: puzzle };
+	  },
+	
+	  // navigation time, set current puzzle
+	  activatePuzzle: function activatePuzzle(id) {
+	    return { type: 'ACTIVATE_PUZZLE', id: id };
+	  },
+	  _setCurrentPuzzle: function _setCurrentPuzzle(id, puzzleData) {
+	    return { type: 'SET_CURRENT_PUZZLE', id: id, puzzleData: puzzleData };
+	  },
+	  _setPuzzleData: function _setPuzzleData(puzzleData) {
+	    return { type: 'SET_PUZZLE_DATA', puzzleData: puzzleData };
+	  },
+	  _setPuns: function _setPuns(puns) {
+	    return { type: 'SET_PUNS', puns: puns };
+	  },
+	
+	  // control visibility of answers, in context of current puzzle
+	  showAlways: function showAlways() {
+	    return { type: 'SHOW_ALWAYS', showState: 'always' };
+	  },
+	  showOnHover: function showOnHover() {
+	    return { type: 'SHOW_ON_HOVER', showState: 'on-hover' };
+	  },
+	  showBelow: function showBelow() {
+	    return { type: 'SHOW_BELOW', showState: 'below' };
+	  },
+	  showNever: function showNever() {
+	    return { type: 'SHOW_NEVER', showState: 'never' };
+	  },
+	
+	  // control state of pun given by index, in context of current puzzle
+	  setPunDone: function setPunDone(index) {
+	    return { type: 'SET_PUN_DONE', index: index, punStatus: 'done' };
+	  },
+	  setPunNotDone: function setPunNotDone(index) {
+	    return { type: 'SET_PUN_NOT_DONE', index: index, punStatus: 'not-done' };
+	  },
+	  setPunRight: function setPunRight(index) {
+	    return { type: 'SET_PUN_RIGHT', index: index, punStatus: 'right' };
+	  },
+	  setPunWrong: function setPunWrong(index) {
+	    return { type: 'SET_PUN_WRONG', index: index, punStatus: 'wrong' };
+	  }
+	};
+	
+	exports.default = actions;
 
 /***/ },
 /* 5 */
@@ -285,11 +285,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return state;
 	};
 	
-	var _immutable = __webpack_require__(4);
+	var _immutable = __webpack_require__(3);
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _actions = __webpack_require__(2);
+	var _actions = __webpack_require__(4);
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
@@ -340,7 +340,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return state;
 	};
 	
-	var _immutable = __webpack_require__(4);
+	var _immutable = __webpack_require__(3);
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
@@ -411,7 +411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return state;
 	};
 	
-	var _immutable = __webpack_require__(4);
+	var _immutable = __webpack_require__(3);
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
