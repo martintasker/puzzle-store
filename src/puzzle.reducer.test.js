@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 
-import actions from './puzzle.actions';
+import puzzleActions from './puzzle.actions';
 import updatePuzzleState from './puzzle.reducer';
 
 const INITIAL_STATE = Immutable.Map({show: 'never'});
@@ -16,28 +16,28 @@ describe('initialization tests', function() {
 
 describe('puzzleData tests', function() {
   it('handles SET_PUZZLE_DATA ', () => {
-    state = updatePuzzleState(state, actions._setPuzzleData({puzzle:{puns:['foo']}}));
+    state = updatePuzzleState(state, puzzleActions._setPuzzleData({puzzle:{puns:['foo']}}));
     expect(Immutable.is(state.getIn(['puzzleData']),Immutable.fromJS([{index:0,status:'not-done'}]))).toBe(true);
   });
 });
 
 describe('SHOW-xxx tests', function() {
   it('handles SHOW-xxx correctly', () => {
-    let state2 = updatePuzzleState(state, actions.showAlways());
+    let state2 = updatePuzzleState(state, puzzleActions.showAlways());
     expect(state2).not.toEqual(state);
     expect(state2.get('show')).toEqual('always');
-    state = updatePuzzleState(state2, actions.showOnHover());
+    state = updatePuzzleState(state2, puzzleActions.showOnHover());
     expect(state.get('show')).toEqual('on-hover');
-    state = updatePuzzleState(state, actions.showAlways());
+    state = updatePuzzleState(state, puzzleActions.showAlways());
     expect(state.get('show')).toEqual('always');
-    state = updatePuzzleState(state, actions.showNever());
+    state = updatePuzzleState(state, puzzleActions.showNever());
     expect(state.get('show')).toEqual('never');
   });
 });
 
 describe('SET-PUN-xxx tests', function() {
   it('handles SET-PUN-xxx correctly', () => {
-    let state2 = updatePuzzleState(state, actions.setPunDone(0));
+    let state2 = updatePuzzleState(state, puzzleActions.setPunDone(0));
     expect(state2).not.toBe(state);
   });
 });

@@ -11,14 +11,14 @@ import Immutable from 'immutable';
   There is a concept of "the current puzzle state" which can be found by taking puzzles[puzzleId].
 */
 
-import actions from './puzzle.actions';
-import puzzleState from './puzzle.reducer';
+import puzzleActions from './puzzle.actions';
+import puzzleReducer from './puzzle.reducer';
 
 const initialState = Immutable.Map({puzzleId: null, puzzles: Immutable.Map()});
 
 // todo: export the below from puzzleState
 function newPuzzleState(puzzleData) {
-  return puzzleState(undefined, actions._setPuzzleData(puzzleData));
+  return puzzleReducer(undefined, puzzleActions._setPuzzleData(puzzleData));
 }
 
 export default function(state = initialState, action) {
@@ -32,6 +32,6 @@ export default function(state = initialState, action) {
   }
 
   // generic and default handling
-  state = state.updateIn(['puzzles', state.get('puzzleId')], subState => puzzleState(subState, action));
+  state = state.updateIn(['puzzles', state.get('puzzleId')], subState => puzzleReducer(subState, action));
   return state;
 }

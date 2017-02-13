@@ -9,15 +9,15 @@ import Immutable from 'immutable';
   }
 */
 
-import puzzleProgressState from './puzzle-progress.reducer';
+import puzzleProgressReducer from './puzzle-progress.reducer';
 
-const initialPuzzleState = Immutable.Map({show: 'never'});
+const initialState = Immutable.Map({show: 'never'});
 
 function newPuzzleProgressState(puns) {
-  return puzzleProgressState(undefined, {type: 'SET_PUNS', puns});
+  return puzzleProgressReducer(undefined, {type: 'SET_PUNS', puns});
 }
 
-export default function(state = initialPuzzleState, action) {
+export default function(state = initialState, action) {
   if (!action) {
     return state;
   }
@@ -32,6 +32,6 @@ export default function(state = initialPuzzleState, action) {
   }
 
   // generic and default handling
-  state = state.updateIn(['puzzleData'], state => puzzleProgressState(state, action));
+  state = state.updateIn(['puzzleData'], state => puzzleProgressReducer(state, action));
   return state;
 }

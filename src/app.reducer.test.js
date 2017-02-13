@@ -2,9 +2,9 @@ import Immutable from 'immutable';
 
 import appState from './app.reducer';
 import actions from './actions';
-import currentState from './current.reducer';
+import currentReducer from './current.reducer';
 
-const INITIAL_STATE = Immutable.Map({currentState: currentState(), puzzleData: Immutable.Map()});
+const INITIAL_STATE = Immutable.Map({currentState: currentReducer(), puzzleData: Immutable.Map()});
 
 var state;
 

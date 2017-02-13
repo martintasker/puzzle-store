@@ -105,7 +105,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	*/
 	
 	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialAppState;
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 	
 	  if (!action) {
@@ -132,10 +132,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var id = action.id;
 	
 	      var puzzleData = state.getIn(['puzzleData', id]);
-	      var newAction = _actions2.default._setCurrentPuzzle(id, puzzleData);
+	      var newAction = _current2.default._setCurrentPuzzle(id, puzzleData);
 	      return {
 	        v: state.updateIn(['current'], function (state) {
-	          return (0, _current2.default)(state, newAction);
+	          return (0, _current4.default)(state, newAction);
 	        })
 	      };
 	    }();
@@ -145,7 +145,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  // generic and default handling
 	  state = state.updateIn(['current'], function (state) {
-	    return (0, _current2.default)(state, action);
+	    return (0, _current4.default)(state, action);
 	  });
 	  return state;
 	};
@@ -154,17 +154,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _actions = __webpack_require__(4);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _current = __webpack_require__(6);
+	var _current = __webpack_require__(10);
 	
 	var _current2 = _interopRequireDefault(_current);
 	
+	var _current3 = __webpack_require__(6);
+	
+	var _current4 = _interopRequireDefault(_current3);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var initialAppState = _immutable2.default.Map({ currentState: (0, _current2.default)(), puzzleData: _immutable2.default.Map() });
+	var initialState = _immutable2.default.Map({ currentState: (0, _current4.default)(), puzzleData: _immutable2.default.Map() });
 
 /***/ },
 /* 3 */
@@ -322,7 +322,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	
 	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialPuzzleState;
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 	
 	  if (!action) {
@@ -355,7 +355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var initialPuzzleState = _immutable2.default.Map({ show: 'never' });
+	var initialState = _immutable2.default.Map({ show: 'never' });
 	
 	/*
 	  puzzleState, data and progress in relation to one puzzle

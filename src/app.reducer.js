@@ -9,12 +9,12 @@ import Immutable from 'immutable';
   }
 */
 
-import actions from './actions';
-import currentState from './current.reducer';
+import currentActions from './current.actions';
+import currentReducer from './current.reducer';
 
-const initialAppState = Immutable.Map({currentState: currentState(), puzzleData: Immutable.Map()});
+const initialState = Immutable.Map({currentState: currentReducer(), puzzleData: Immutable.Map()});
 
-export default function(state = initialAppState, action) {
+export default function(state = initialState, action) {
   if (!action) {
     return state;
   }
@@ -27,11 +27,11 @@ export default function(state = initialAppState, action) {
   if (action.type === 'ACTIVATE_PUZZLE') {
     let {id} = action;
     let puzzleData = state.getIn(['puzzleData', id]);
-    let newAction = actions._setCurrentPuzzle(id, puzzleData);
-    return state.updateIn(['current'], state => currentState(state, newAction));
+    let newAction = currentActions._setCurrentPuzzle(id, puzzleData);
+    return state.updateIn(['current'], state => currentReducer(state, newAction));
   }
 
   // generic and default handling
-  state = state.updateIn(['current'], state => currentState(state, action))
+  state = state.updateIn(['current'], state => currentReducer(state, action))
   return state;
 }
