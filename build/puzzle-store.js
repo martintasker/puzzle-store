@@ -158,7 +158,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _current = __webpack_require__(5);
+	var _current = __webpack_require__(6);
 	
 	var _current2 = _interopRequireDefault(_current);
 	
@@ -174,14 +174,24 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 4 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var actions = {
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _puzzleProgress = __webpack_require__(5);
+	
+	var _puzzleProgress2 = _interopRequireDefault(_puzzleProgress);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var actions = _extends({}, _puzzleProgress2.default, {
+	
 	  // setup time: add puzzle data into store side of state
 	  addPuzzleData: function addPuzzleData(id, puzzle) {
 	    return { type: 'ADD_PUZZLE_DATA', id: id, puzzle: puzzle };
@@ -197,9 +207,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _setPuzzleData: function _setPuzzleData(puzzleData) {
 	    return { type: 'SET_PUZZLE_DATA', puzzleData: puzzleData };
 	  },
-	  _setPuns: function _setPuns(puns) {
-	    return { type: 'SET_PUNS', puns: puns };
-	  },
 	
 	  // control visibility of answers, in context of current puzzle
 	  showAlways: function showAlways() {
@@ -213,6 +220,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  showNever: function showNever() {
 	    return { type: 'SHOW_NEVER', showState: 'never' };
+	  }
+	});
+	
+	exports.default = actions;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var actions = {
+	  // navigation time, set up current puzzle
+	  _setPuns: function _setPuns(puns) {
+	    return { type: 'SET_PUNS', puns: puns };
 	  },
 	
 	  // control state of pun given by index, in context of current puzzle
@@ -233,7 +258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = actions;
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -293,7 +318,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
-	var _puzzle = __webpack_require__(6);
+	var _puzzle = __webpack_require__(7);
 	
 	var _puzzle2 = _interopRequireDefault(_puzzle);
 	
@@ -307,7 +332,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -344,7 +369,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _puzzleProgress = __webpack_require__(7);
+	var _puzzleProgress = __webpack_require__(8);
 	
 	var _puzzleProgress2 = _interopRequireDefault(_puzzleProgress);
 	
@@ -366,7 +391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
