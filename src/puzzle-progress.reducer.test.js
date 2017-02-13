@@ -1,7 +1,7 @@
 import Immutable from 'immutable';
 
 import actions from './actions';
-import updatePuzzleProgressState from './puzzle-progress.state';
+import updatePuzzleProgressState from './puzzle-progress.reducer';
 
 const INITIAL_STATE = Immutable.List();
 

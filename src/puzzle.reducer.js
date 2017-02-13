@@ -9,7 +9,7 @@ import Immutable from 'immutable';
   }
 */
 
-import puzzleProgressState from './puzzle-progress.state';
+import puzzleProgressState from './puzzle-progress.reducer';
 
 const initialPuzzleState = Immutable.Map({show: 'never'});
 

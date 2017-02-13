@@ -1,8 +1,8 @@
 import Immutable from 'immutable';
 
 import actions from './actions';
-import puzzleState from './puzzle.state';
-import currentState from './current.state';
+import puzzleState from './puzzle.reducer';
+import currentState from './current.reducer';
 
 const INITIAL_STATE = Immutable.Map({puzzleId: null, puzzles: Immutable.Map()});
 

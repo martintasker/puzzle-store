@@ -1,5 +1,5 @@
 import {createStore} from 'redux';
-import appState from './app.state';
+import appState from './app.reducer';
 
 // export the actions and the store
 import actions from './actions';
