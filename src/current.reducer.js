@@ -11,7 +11,7 @@ import Immutable from 'immutable';
   There is a concept of "the current puzzle state" which can be found by taking puzzles[puzzleId].
 */
 
-import actions from './actions';
+import actions from './puzzle.actions';
 import puzzleState from './puzzle.reducer';
 
 const initialState = Immutable.Map({puzzleId: null, puzzles: Immutable.Map()});

@@ -184,13 +184,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _puzzle = __webpack_require__(9);
+	var _current = __webpack_require__(10);
 	
-	var _puzzle2 = _interopRequireDefault(_puzzle);
+	var _current2 = _interopRequireDefault(_current);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var actions = _extends({}, _puzzle2.default, {
+	var actions = _extends({}, _current2.default, {
 	
 	  // setup time: add puzzle data into store side of state
 	  addPuzzleData: function addPuzzleData(id, puzzle) {
@@ -200,9 +200,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // navigation time, set current puzzle
 	  activatePuzzle: function activatePuzzle(id) {
 	    return { type: 'ACTIVATE_PUZZLE', id: id };
-	  },
-	  _setCurrentPuzzle: function _setCurrentPuzzle(id, puzzleData) {
-	    return { type: 'SET_CURRENT_PUZZLE', id: id, puzzleData: puzzleData };
 	  }
 	});
 	
@@ -288,7 +285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  // generic and default handling
 	  state = state.updateIn(['puzzles', state.get('puzzleId')], function (subState) {
-	    return (0, _puzzle2.default)(subState, action);
+	    return (0, _puzzle4.default)(subState, action);
 	  });
 	  return state;
 	};
@@ -297,13 +294,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _actions = __webpack_require__(4);
-	
-	var _actions2 = _interopRequireDefault(_actions);
-	
-	var _puzzle = __webpack_require__(7);
+	var _puzzle = __webpack_require__(9);
 	
 	var _puzzle2 = _interopRequireDefault(_puzzle);
+	
+	var _puzzle3 = __webpack_require__(7);
+	
+	var _puzzle4 = _interopRequireDefault(_puzzle3);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -311,7 +308,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	// todo: export the below from puzzleState
 	function newPuzzleState(puzzleData) {
-	  return (0, _puzzle2.default)(undefined, _actions2.default._setPuzzleData(puzzleData));
+	  return (0, _puzzle4.default)(undefined, _puzzle2.default._setPuzzleData(puzzleData));
 	}
 
 /***/ },
@@ -476,6 +473,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  showNever: function showNever() {
 	    return { type: 'SHOW_NEVER', showState: 'never' };
+	  }
+	});
+	
+	exports.default = actions;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _puzzle = __webpack_require__(9);
+	
+	var _puzzle2 = _interopRequireDefault(_puzzle);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var actions = _extends({}, _puzzle2.default, {
+	
+	  // navigation time, set current puzzle
+	  _setCurrentPuzzle: function _setCurrentPuzzle(id, puzzleData) {
+	    return { type: 'SET_CURRENT_PUZZLE', id: id, puzzleData: puzzleData };
 	  }
 	});
 	

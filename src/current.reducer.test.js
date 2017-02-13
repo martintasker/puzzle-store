@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 
-import actions from './actions';
+import actions from './current.actions';
 import puzzleState from './puzzle.reducer';
 import currentState from './current.reducer';
 
