@@ -184,13 +184,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _puzzleProgress = __webpack_require__(5);
+	var _puzzle = __webpack_require__(9);
 	
-	var _puzzleProgress2 = _interopRequireDefault(_puzzleProgress);
+	var _puzzle2 = _interopRequireDefault(_puzzle);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var actions = _extends({}, _puzzleProgress2.default, {
+	var actions = _extends({}, _puzzle2.default, {
 	
 	  // setup time: add puzzle data into store side of state
 	  addPuzzleData: function addPuzzleData(id, puzzle) {
@@ -203,23 +203,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _setCurrentPuzzle: function _setCurrentPuzzle(id, puzzleData) {
 	    return { type: 'SET_CURRENT_PUZZLE', id: id, puzzleData: puzzleData };
-	  },
-	  _setPuzzleData: function _setPuzzleData(puzzleData) {
-	    return { type: 'SET_PUZZLE_DATA', puzzleData: puzzleData };
-	  },
-	
-	  // control visibility of answers, in context of current puzzle
-	  showAlways: function showAlways() {
-	    return { type: 'SHOW_ALWAYS', showState: 'always' };
-	  },
-	  showOnHover: function showOnHover() {
-	    return { type: 'SHOW_ON_HOVER', showState: 'on-hover' };
-	  },
-	  showBelow: function showBelow() {
-	    return { type: 'SHOW_BELOW', showState: 'below' };
-	  },
-	  showNever: function showNever() {
-	    return { type: 'SHOW_NEVER', showState: 'never' };
 	  }
 	});
 	
@@ -455,6 +438,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	*/
 	
 	var initialState = _immutable2.default.List();
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _puzzleProgress = __webpack_require__(5);
+	
+	var _puzzleProgress2 = _interopRequireDefault(_puzzleProgress);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var actions = _extends({}, _puzzleProgress2.default, {
+	
+	  // setup time: add puzzle data into store side of state
+	  _setPuzzleData: function _setPuzzleData(puzzleData) {
+	    return { type: 'SET_PUZZLE_DATA', puzzleData: puzzleData };
+	  },
+	
+	  // control visibility of answers, in context of current puzzle
+	  showAlways: function showAlways() {
+	    return { type: 'SHOW_ALWAYS', showState: 'always' };
+	  },
+	  showOnHover: function showOnHover() {
+	    return { type: 'SHOW_ON_HOVER', showState: 'on-hover' };
+	  },
+	  showBelow: function showBelow() {
+	    return { type: 'SHOW_BELOW', showState: 'below' };
+	  },
+	  showNever: function showNever() {
+	    return { type: 'SHOW_NEVER', showState: 'never' };
+	  }
+	});
+	
+	exports.default = actions;
 
 /***/ }
 /******/ ])

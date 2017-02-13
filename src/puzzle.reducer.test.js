@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 
-import actions from './actions';
+import actions from './puzzle.actions';
 import updatePuzzleState from './puzzle.reducer';
 
 const INITIAL_STATE = Immutable.Map({show: 'never'});
