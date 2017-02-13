@@ -397,9 +397,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (action.type === 'SET_PUNS') {
 	    var puns = action.puns;
 	
-	    return _immutable2.default.List(puns.map(function (pun, index) {
+	    return state.set('puns', _immutable2.default.List(puns.map(function (pun, index) {
 	      return _immutable2.default.Map({ index: index, status: 'not-done' });
-	    }));
+	    })));
 	  }
 	
 	  var statusActionTypes = ['SET_PUN_NOT_DONE', 'SET_PUN_RIGHT', 'SET_PUN_WRONG', 'SET_PUN_DONE'];
@@ -408,7 +408,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var punStatus = action.punStatus;
 	
 	      return {
-	        v: state.updateIn([action.index, 'status'], function () {
+	        v: state.updateIn(['puns', action.index, 'status'], function () {
 	          return punStatus;
 	        })
 	      };
@@ -429,16 +429,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	/*
 	  puzzleProgressState: completion state of each pun within a puzzle
 	
-	  [
-	    { index -> {
-	      status: one of 'not-done', 'done', 'right', 'wrong'
-	    }}
-	  ]
+	  puns:
+	    [
+	      { index -> {
+	        status: one of 'not-done', 'done', 'right', 'wrong'
+	      }}
+	    ]
+	  progress:
+	    [
+	      {
+	        timestamp:
+	        right:
+	        wrong:
+	        done:
+	      }
+	    ]
 	
 	  The indexes increase sequentially from zero and correspond to the index of the map, in the list.
 	*/
 	
-	var initialState = _immutable2.default.List();
+	var initialState = _immutable2.default.Map({ puns: _immutable2.default.List(), progress: _immutable2.default.List() });
 
 /***/ },
 /* 9 */
