@@ -340,7 +340,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  // generic and default handling
 	  state = state.updateIn(['puzzleData'], function (state) {
-	    return (0, _puzzleProgress2.default)(state, action);
+	    return (0, _puzzleProgress4.default)(state, action);
 	  });
 	  return state;
 	};
@@ -349,13 +349,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _puzzleProgress = __webpack_require__(8);
+	var _puzzleProgress = __webpack_require__(5);
 	
 	var _puzzleProgress2 = _interopRequireDefault(_puzzleProgress);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _puzzleProgress3 = __webpack_require__(8);
 	
-	var initialState = _immutable2.default.Map({ show: 'never' });
+	var _puzzleProgress4 = _interopRequireDefault(_puzzleProgress3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	/*
 	  puzzleState, data and progress in relation to one puzzle
@@ -366,8 +368,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	*/
 	
+	var initialState = _immutable2.default.Map({ show: 'never' });
+	
 	function newPuzzleProgressState(puns) {
-	  return (0, _puzzleProgress2.default)(undefined, { type: 'SET_PUNS', puns: puns });
+	  return (0, _puzzleProgress4.default)(undefined, _puzzleProgress2.default._setPuns(puns));
 	}
 
 /***/ },

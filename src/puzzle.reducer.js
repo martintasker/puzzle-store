@@ -9,12 +9,13 @@ import Immutable from 'immutable';
   }
 */
 
+import puzzleProgressActions from './puzzle-progress.actions';
 import puzzleProgressReducer from './puzzle-progress.reducer';
 
 const initialState = Immutable.Map({show: 'never'});
 
 function newPuzzleProgressState(puns) {
-  return puzzleProgressReducer(undefined, {type: 'SET_PUNS', puns});
+  return puzzleProgressReducer(undefined, puzzleProgressActions._setPuns(puns));
 }
 
 export default function(state = initialState, action) {
