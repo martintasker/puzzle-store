@@ -386,10 +386,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	  var action = arguments[1];
-	
+	exports.default = function (state, action) {
+	  if (!state) {
+	    state = initialState.set('progress', _immutable2.default.Map(getProgressRecord(new Date(), _immutable2.default.List())));
+	  }
 	  if (!action) {
 	    return state;
 	  }
@@ -397,20 +397,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (action.type === 'SET_PUNS') {
 	    var puns = action.puns;
 	
-	    return state.set('puns', _immutable2.default.List(puns.map(function (pun, index) {
+	    var punList = _immutable2.default.List(puns.map(function (pun, index) {
 	      return _immutable2.default.Map({ index: index, status: 'not-done' });
-	    })));
+	    }));
+	    return state.set('puns', punList).set('progress', _immutable2.default.Map(getProgressRecord(new Date(), punList)));
 	  }
 	
 	  var statusActionTypes = ['SET_PUN_NOT_DONE', 'SET_PUN_RIGHT', 'SET_PUN_WRONG', 'SET_PUN_DONE'];
 	  if (statusActionTypes.includes(action.type)) {
+	    var newState;
+	
 	    var _ret = function () {
 	      var punStatus = action.punStatus;
+	      newState = state.updateIn(['puns', action.index, 'status'], function () {
+	        return punStatus;
+	      });
 	
+	      if (newState === state) {
+	        return {
+	          v: void 0
+	        };
+	      }
+	      state = newState;
+	      var progressRecord = getProgressRecord(new Date(), state.get('puns'));
 	      return {
-	        v: state.updateIn(['puns', action.index, 'status'], function () {
-	          return punStatus;
-	        })
+	        v: state.set('progress', _immutable2.default.Map(progressRecord)).set('log', state.get('log').push(progressRecord))
 	      };
 	    }();
 	
@@ -435,20 +446,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	        status: one of 'not-done', 'done', 'right', 'wrong'
 	      }}
 	    ]
-	  progress:
+	  progress: (one progress-record)
+	  log:
 	    [
-	      {
-	        timestamp:
-	        right:
-	        wrong:
-	        done:
-	      }
+	      (list of progress-records)
 	    ]
 	
 	  The indexes increase sequentially from zero and correspond to the index of the map, in the list.
 	*/
 	
-	var initialState = _immutable2.default.Map({ puns: _immutable2.default.List(), progress: _immutable2.default.List() });
+	var initialState = _immutable2.default.Map({ puns: _immutable2.default.List(), log: _immutable2.default.List(), progress: null });
+	
+	function getProgressRecord(date, puns) {
+	  var result = {
+	    date: date,
+	    done: puns.reduce(function (count, pun) {
+	      return count + (pun.get('status') !== 'not-done' ? 1 : 0);
+	    }, 0),
+	    right: puns.reduce(function (count, pun) {
+	      return count + (pun.get('status') === 'right' ? 1 : 0);
+	    }, 0),
+	    wrong: puns.reduce(function (count, pun) {
+	      return count + (pun.get('status') === 'wrong' ? 1 : 0);
+	    }, 0),
+	    total: puns.count()
+	  };
+	  return result;
+	}
 
 /***/ },
 /* 9 */
